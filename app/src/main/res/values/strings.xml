@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">MAD5112A1_2024_rough_draft</string>
+    <string name="less_than_15">Anne Frank – Diarist during the Holocaust (died at 15)</string>
+    <string name="less_than_20">Joan of Arc – French heroine and martyr (died at 19)</string>
+    <string name="less_than_25">Tupac Shakur – Rapper and activist (died at 25)</string>
+    <string name="less_than_30">Heath Ledger – Actor (died at 28)</string>
+    <string name="less_than_35">Bruce Lee – Martial artist and actor (died at 32)</string>
+    <string name="less_than_40">Amelia Earhart – Aviator and explorer (disappeared at 39)</string>
+    <string name="less_than_45">Chadwick Boseman – Actor (died at 43)</string>
+    <string name="less_than_50">George Orwell – Author (died at 46)</string>
+    <string name="less_than_55">George Michael – Pop legend and former Wham! member (died at 53)</string>
+    <string name="less_than_60">Steve Jobs – Co-founder of Apple (died at 56)</string>
+    <string name="less_than_65">Anthony Bourdain – Renowned chef, author, and travel documentarian (died at 61)</string>
+    <string name="less_than_70">Leonardo da Vinci – Inventor and artist (died at 67)</string>
 </resources>

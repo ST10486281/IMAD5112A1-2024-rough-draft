@@ -29,29 +29,29 @@ class MainActivity : AppCompatActivity() {
                 if(validatedValue < 10) {
                     result = "Please a number greater than 10";
                 } else if(10 < validatedValue && validatedValue <= 15) {
-                    result = "Anne Frank – Diarist during the Holocaust (died at 15)";
+                    result = getString(R.string.less_than_15);
                 } else if(15 < validatedValue && validatedValue <= 20) {
-                    result = "Joan of Arc – French heroine and martyr (died at 19)";
+                    result = getString(R.string.less_than_20);
                 } else if(20 < validatedValue && validatedValue <= 25) {
-                    result = "Tupac Shakur – Rapper and activist (died at 25)";
+                    result = getString(R.string.less_than_25);
                 } else if(25 < validatedValue && validatedValue <= 30) {
-                    result = "Heath Ledger – Actor (died at 28)";
+                    result = getString(R.string.less_than_30);
                 } else if(30 < validatedValue && validatedValue <= 35) {
-                    result = "Bruce Lee – Martial artist and actor (died at 32)";
+                    result = getString(R.string.less_than_35);
                 } else if(35 < validatedValue && validatedValue <= 40) {
-                    result = "Amelia Earhart – Aviator and explorer (disappeared at 39)";
+                    result = getString(R.string.less_than_40);
                 } else if(40 < validatedValue && validatedValue <= 45) {
-                    result = "Chadwick Boseman – Actor (died at 43)";
+                    result = getString(R.string.less_than_45);
                 } else if(45 < validatedValue && validatedValue <= 50) {
-                    result = "George Orwell – Author (died at 46)";
+                    result = getString(R.string.less_than_50);
                 } else if(50 < validatedValue && validatedValue <= 55) {
-                    result = "George Michael – Pop legend and former Wham! member (died at 53)";
+                    result = getString(R.string.less_than_55);
                 } else if(55 < validatedValue && validatedValue <= 60) {
-                    result = "Steve Jobs – Co-founder of Apple (died at 56)";
+                    result = getString(R.string.less_than_60);
                 } else if(60 < validatedValue && validatedValue <= 65) {
-                    result = "Anthony Bourdain – Renowned chef, author, and travel documentarian (died at 61)";
+                    result = getString(R.string.less_than_65);
                 } else if(65 < validatedValue && validatedValue <= 70) {
-                    result = "Leonardo da Vinci – Inventor and artist (died at 67)\u200B";
+                    result = getString(R.string.less_than_70);
                 } else if(70 < validatedValue) {
                     result = "Please a number less than 71";
                 }
