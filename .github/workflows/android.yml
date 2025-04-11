@@ -44,16 +44,16 @@ jobs:
 #      - name: Run Instrumented tests (Android tests)
 #        run: ./gradlew connectedDebugAndroidTest
 
-      - name: Upload unit test results
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-results
-          path: app/build/**/test-results/**
-
-#      - name: Upload instrumented test results
+#      - name: Upload unit test results
 #        if: always()
 #        uses: actions/upload-artifact@v4
 #        with:
-#          name: instrumented-test-results
-#          path: app/build/outputs/androidTest-results
+#          name: test-results
+#          path: app/build/test-results/testDebugUnitTest
+
+      - name: Upload instrumented test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: instrumented-test-results
+          path: app/build/outputs/androidTest-results
