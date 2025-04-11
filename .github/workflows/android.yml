@@ -28,9 +28,7 @@ jobs:
 
       - name: Set up Android SDK
         uses: android-actions/setup-android@v2
-        with:
-          android-version: ${{ matrix.android-version }}
-          cache: true
+
 
       - name: Install dependencies
         run: |
@@ -51,7 +49,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: test-results
-          path: app/build/test-results  # ✅ more general
+          path: app/build/**/test-results/**
 
 #      - name: Upload instrumented test results
 #        if: always()
