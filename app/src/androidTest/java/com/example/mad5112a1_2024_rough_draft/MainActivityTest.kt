@@ -29,11 +29,11 @@ class MainActivityTest {
             val editText: EditText = activity.findViewById(R.id.editTextText)
 
             // Simulate user input
-            editText.setText("John")
+            editText.setText("11")
             // Perform button click
             button.performClick()
             // Check if the TextView's text was updated
-//            assertEquals("Hello, John! Button was clicked!", textView.text)
+            assertEquals("Anne Frank – Diarist during the Holocaust (died at 15)", textView.text)
 //            assertEquals(Color.RED, textView.currentTextColor)
         }
     }
