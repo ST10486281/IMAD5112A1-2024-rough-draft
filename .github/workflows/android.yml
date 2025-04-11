@@ -28,9 +28,8 @@ jobs:
 
       - name: Set up Android SDK
         uses: android-actions/setup-android@v2
-        with:
-          android-version: ${{ matrix.android-version }}
-          cache: true
+
+
 
       - name: Install dependencies
         run: |
