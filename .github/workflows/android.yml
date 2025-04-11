@@ -2,13 +2,19 @@ name: Android CI
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   pull_request:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        android-version: [35]
 
     steps:
       - name: Checkout code
@@ -22,6 +28,9 @@ jobs:
 
       - name: Set up Android SDK
         uses: android-actions/setup-android@v2
+        with:
+          android-version: ${{ matrix.android-version }}
+          cache: true
 
       - name: Install dependencies
         run: |
@@ -31,14 +40,18 @@ jobs:
       - name: Build the project
         run: ./gradlew assembleDebug
 
-      - name: Start emulator
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 30
-          target: default
-          arch: x86_64
-          profile: pixel_3a
-          script: ./gradlew connectedDebugAndroidTest
+#      - name: Run unit tests
+#        run: ./gradlew testDebugUnitTest
+
+      - name: Run Instrumented tests (Android tests)
+        run: ./gradlew connectedDebugAndroidTest
+
+#      - name: Upload test results
+#        if: always()
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: test-results
+#          path: app/build/test-results/testDebugUnitTest
 
       - name: Upload instrumented test results
         if: always()
@@ -46,5 +59,3 @@ jobs:
         with:
           name: instrumented-test-results
           path: app/build/outputs/androidTest-results
-          if-no-files-found: ignore
-
