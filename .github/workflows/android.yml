@@ -30,6 +30,14 @@ jobs:
       - name: Build debug APK
         run: ./gradlew assembleDebug
 
+      - name: Start emulator
+        run: |
+          echo "y" | sdkmanager --install "system-images;android-30;default;x86_64"
+          echo "no" | avdmanager create avd -n test -k "system-images;android-30;default;x86_64" --force
+          emulator -avd test -no-audio -no-window -no-boot-anim &
+          adb wait-for-device
+          adb shell input keyevent 82
+
       - name: Run instrumented tests
         run: ./gradlew connectedDebugAndroidTest
 
