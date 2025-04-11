@@ -1,45 +1,36 @@
-name: Android CI
+name: Test and deploy
 
 on:
   push:
-    branches: [ main ]
+    tags:
+      - 'v*'
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
+  unit_tests:
+    runs-on: [ubuntu-latest]
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up JDK 17
+      - uses: actions/checkout@v3
+      - name: set up JDK
         uses: actions/setup-java@v3
         with:
-          java-version: '17'
-          distribution: 'temurin'
-          cache: gradle
-
-      - name: Grant execute permission for gradlew
-        run: chmod +x ./gradlew
-
-      - name: Run unit tests
+          distribution: 'zulu'
+          java-version: 11
+      - name: Unit tests
         run: ./gradlew testDebugUnitTest
-
-      - name: Build debug APK
-        run: ./gradlew assembleDebug
-
-      - name: Start emulator
-        run: |
-          echo "y" | sdkmanager --install "system-images;android-30;default;x86_64"
-          echo "no" | avdmanager create avd -n test -k "system-images;android-30;default;x86_64" --force
-          emulator -avd test -no-audio -no-window -no-boot-anim &
-          adb wait-for-device
-          adb shell input keyevent 82
-
-      - name: Run instrumented tests
-        run: ./gradlew connectedDebugAndroidTest
-
-
-
+  android_tests:
+    runs-on: [ macos-12 ]
+    steps:
+      - uses: actions/checkout@v3
+      - name: set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: 11
+      - name: Instrumented Tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: ./gradlew connectedDebugAndroidTest
