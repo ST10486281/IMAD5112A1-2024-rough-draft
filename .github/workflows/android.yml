@@ -24,11 +24,13 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: 11
-          distribution: 'temurin'
+          distribution: 'adoptopenjdk'
 
       - name: Set up Android SDK
         uses: android-actions/setup-android@v2
-
+        with:
+          android-version: ${{ matrix.android-version }}
+          cache: true
 
       - name: Install dependencies
         run: |
@@ -38,13 +40,13 @@ jobs:
       - name: Build the project
         run: ./gradlew assembleDebug
 
-      - name: Run unit tests
-        run: ./gradlew testDebugUnitTest
+#      - name: Run unit tests
+#        run: ./gradlew testDebugUnitTest
 
-#      - name: Run Instrumented tests (Android tests)
-#        run: ./gradlew connectedDebugAndroidTest
+      - name: Run Instrumented tests (Android tests)
+        run: ./gradlew connectedDebugAndroidTest
 
-#      - name: Upload unit test results
+#      - name: Upload test results
 #        if: always()
 #        uses: actions/upload-artifact@v4
 #        with:
